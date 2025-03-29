@@ -1,4 +1,4 @@
-package org.skypro.skyshop;
+package org.skypro.skyshop.Product;
 
 public class Product {
     private String name;
@@ -24,4 +24,9 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public String toString(Product product) {
+        return name + " имя." + price + " цена.";
+    }
+
 }

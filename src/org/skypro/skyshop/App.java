@@ -1,5 +1,6 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Product.Product;
 import org.skypro.skyshop.basket.ProductBasket;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

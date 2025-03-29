@@ -1,6 +1,6 @@
 package org.skypro.skyshop.basket;
 
-import org.skypro.skyshop.Product;
+import org.skypro.skyshop.Product.Product;
 
 public class ProductBasket {
     private Product[] list = new Product[5];
@@ -20,9 +20,9 @@ public class ProductBasket {
 
     public int getSum() {
         int sum = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                sum = sum + list[i].getPrice();
+        for (Product pro: list) {
+            if (pro != null) {
+                sum = sum + pro.getPrice();
             }
         }
         return sum;
@@ -40,7 +40,7 @@ public class ProductBasket {
     public boolean isInBasket(Product product) {
         for (int q = 0; q < list.length; q++) {
             if (list[q] != null) {
-                if (list[q].getName().equals(product.getName())) {
+                if (list[q].getName().equals(product.getName()) && list[q].getPrice() == product.getPrice()) {
                     return true;
                 }
             }
