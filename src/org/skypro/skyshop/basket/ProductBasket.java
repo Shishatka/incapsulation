@@ -37,10 +37,10 @@ public class ProductBasket {
         System.out.println("Итого: " + getSum());
     }
 
-    public boolean isInBasket(Product product) {
-        for (int q = 0; q < list.length; q++) {
-            if (list[q] != null) {
-                if (list[q].getName().equals(product.getName()) && list[q].getPrice() == product.getPrice()) {
+    public boolean isInBasket(String name) {
+        for (Product pro: list) {
+            if (pro != null) {
+                if (pro.getName().equals(name)) {
                     return true;
                 }
             }

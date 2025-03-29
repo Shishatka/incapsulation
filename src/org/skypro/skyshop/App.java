@@ -20,12 +20,12 @@ public class App {
 
 
         System.out.println(basket.getSum());
-        System.out.println(basket.isInBasket(toiletPaper));
-        System.out.println(basket.isInBasket(gameBoy));
+        System.out.println(basket.isInBasket("toilet paper"));
+        System.out.println(basket.isInBasket("game boy"));
         basket.printBasket();
         basket.emptyBasket();
         basket.printBasket();
-        System.out.println(basket.isInBasket(gameBoy));
+        System.out.println(basket.isInBasket("game boy"));
 
     }
 }
