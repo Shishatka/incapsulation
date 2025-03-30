@@ -31,6 +31,7 @@ public class ProductBasket {
     public void printBasket() {
         for (int i = 0; i < list.length; i++) {
             if (list[i] != null) {
+
                 System.out.println(list[i].getName() + ": " + list[i].getPrice());
             }
         }

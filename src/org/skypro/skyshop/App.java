@@ -1,14 +1,17 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Product.DiscountedProduct.DiscountedProduct;
+import org.skypro.skyshop.Product.FixPriceProduct.FixPriceProduct;
 import org.skypro.skyshop.Product.Product;
+import org.skypro.skyshop.Product.SimpleProduct.SimpleProduct;
 import org.skypro.skyshop.basket.ProductBasket;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class App {
     public static void main(String[] args) {
-        Product toiletPaper = new Product("toilet paper", 100);
-        Product gameBoy = new Product("game boy", 500);
+        Product toiletPaper = new SimpleProduct("toilet paper", 100);
+        Product gameBoy = new SimpleProduct("game boy", 500);
 
         ProductBasket basket = new ProductBasket();
         basket.addProduct(toiletPaper);
@@ -27,5 +30,10 @@ public class App {
         basket.printBasket();
         System.out.println(basket.isInBasket("game boy"));
 
+        FixPriceProduct nintendoSwitch = new FixPriceProduct("nintendo switch");
+        DiscountedProduct nintendo = new DiscountedProduct("nintendo 3ds", 600, 50);
+        System.out.println(nintendo);
+        System.out.println(toiletPaper);
+        System.out.println(nintendoSwitch);
     }
 }
