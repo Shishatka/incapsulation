@@ -24,4 +24,6 @@ public abstract class Product {
         return name + " имя.";
     }
 
+    public abstract boolean isSpecial();
+
 }

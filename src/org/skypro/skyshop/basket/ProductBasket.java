@@ -32,7 +32,7 @@ public class ProductBasket {
         for (int i = 0; i < list.length; i++) {
             if (list[i] != null) {
 
-                System.out.println(list[i].getName() + ": " + list[i].getPrice());
+                System.out.println(list[i]);
             }
         }
         System.out.println("Итого: " + getSum());

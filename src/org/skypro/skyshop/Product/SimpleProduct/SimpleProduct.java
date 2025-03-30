@@ -19,6 +19,11 @@ public class SimpleProduct extends Product {
         return price;
     }
 
+    @Override
+    public boolean isSpecial() {
+        return false;
+    }
+
     public String toString() {
         return getName() + ": " + price;
     }

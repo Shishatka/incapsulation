@@ -23,6 +23,11 @@ public class DiscountedProduct extends Product {
     }
 
     @Override
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
     public String toString() {
         return getName() + " " + (int) discount + "%: " + getPrice() + " " + (int) discount + "%";
     }

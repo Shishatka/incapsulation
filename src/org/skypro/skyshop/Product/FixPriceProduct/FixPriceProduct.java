@@ -15,6 +15,11 @@ public class FixPriceProduct extends Product {
         return PRICE;
     }
 
+    @Override
+    public boolean isSpecial() {
+        return true;
+    }
+
     public String toString() {
         return getName() + " " + PRICE + ": " + PRICE;
     }

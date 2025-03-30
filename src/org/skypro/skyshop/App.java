@@ -17,9 +17,7 @@ public class App {
         basket.addProduct(toiletPaper);
         basket.addProduct(toiletPaper);
         basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
+
 
 
         System.out.println(basket.getSum());
@@ -35,5 +33,12 @@ public class App {
         System.out.println(nintendo);
         System.out.println(toiletPaper);
         System.out.println(nintendoSwitch);
+        basket.addProduct(nintendo);
+        basket.addProduct(nintendoSwitch);
+        basket.addProduct(gameBoy);
+        basket.addProduct(toiletPaper);
+        System.out.println();
+        basket.printBasket();
+        System.out.println(nintendo.isSpecial());
     }
 }
