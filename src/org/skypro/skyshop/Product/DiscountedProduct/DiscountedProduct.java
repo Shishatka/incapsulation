@@ -4,8 +4,8 @@ import org.skypro.skyshop.Product.Product;
 
 public class DiscountedProduct extends Product {
 
-    int price;
-    double discount;
+    private int price;
+    private double discount;
 
     public DiscountedProduct(String name, int price, double discount) {
         super(name);

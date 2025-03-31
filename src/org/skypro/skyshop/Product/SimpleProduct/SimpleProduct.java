@@ -3,7 +3,7 @@ package org.skypro.skyshop.Product.SimpleProduct;
 import org.skypro.skyshop.Product.Product;
 
 public class SimpleProduct extends Product {
-    int price;
+    private int price;
 
     public SimpleProduct(String name, int price) {
         super(name);
