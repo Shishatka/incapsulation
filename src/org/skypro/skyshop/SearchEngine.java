@@ -1,5 +1,6 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Exceptions.BestResultNotFound;
 import org.skypro.skyshop.interfaces.Searchable;
 
 public class SearchEngine {
@@ -28,5 +29,14 @@ public class SearchEngine {
                 break;
             }
         }
+    }
+
+    public Searchable bestResultSearch(String search) {
+        for (Searchable item: array) {
+            if (item.getSearchTerm().contains(search)) {
+                return item;
+            }
+        }
+        throw new BestResultNotFound("Такого предмета не нашлось");
     }
 }

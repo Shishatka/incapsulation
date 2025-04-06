@@ -54,5 +54,13 @@ public class App {
 
         System.out.println(Arrays.toString(engine.search("article A")));
         System.out.println(Arrays.toString(engine.search("game boy")));
+
+        System.out.println();
+        System.out.println();
+
+        SimpleProduct product = new SimpleProduct("Towel", 100);
+        DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
+
+        engine.bestResultSearch("");
     }
 }
