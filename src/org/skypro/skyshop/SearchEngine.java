@@ -37,6 +37,6 @@ public class SearchEngine {
                 return item;
             }
         }
-        throw new BestResultNotFound("Такого предмета не нашлось");
+        throw new BestResultNotFound("Такого предмета нет");
     }
 }
