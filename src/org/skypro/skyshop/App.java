@@ -4,7 +4,10 @@ import org.skypro.skyshop.Product.DiscountedProduct.DiscountedProduct;
 import org.skypro.skyshop.Product.FixPriceProduct.FixPriceProduct;
 import org.skypro.skyshop.Product.Product;
 import org.skypro.skyshop.Product.SimpleProduct.SimpleProduct;
+import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
+
+import java.util.Arrays;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -40,5 +43,16 @@ public class App {
         System.out.println();
         basket.printBasket();
         System.out.println(nintendo.isSpecial());
+
+        Article articleA = new Article("article A", "Hello, my name is Vasily");
+        Article articleB = new Article("Article B", "Hi, Vasily!");
+        SearchEngine engine = new SearchEngine(10);
+        engine.add(articleA);
+        engine.add(articleB);
+        engine.add(nintendo);
+        engine.add(gameBoy);
+
+        System.out.println(Arrays.toString(engine.search("article A")));
+        System.out.println(Arrays.toString(engine.search("game boy")));
     }
 }
