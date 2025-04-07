@@ -1,5 +1,6 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Exceptions.BestResultNotFound;
 import org.skypro.skyshop.Product.DiscountedProduct.DiscountedProduct;
 import org.skypro.skyshop.Product.FixPriceProduct.FixPriceProduct;
 import org.skypro.skyshop.Product.Product;
@@ -52,15 +53,21 @@ public class App {
         engine.add(nintendo);
         engine.add(gameBoy);
 
-        System.out.println(Arrays.toString(engine.search("article A")));
-        System.out.println(Arrays.toString(engine.search("game boy")));
 
         System.out.println();
         System.out.println();
 
-        SimpleProduct product = new SimpleProduct("Towel", 100);
+        SimpleProduct towel = new SimpleProduct("Towel", 100);
         DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
 
-        engine.bestResultSearch("");
-    }
+        engine.add(towel);
+
+        try {
+            System.out.println(Arrays.toString(engine.search("article A")));
+            System.out.println(Arrays.toString(engine.search("game boy")));
+            System.out.println(Arrays.toString(engine.search("lap")));
+        } catch (BestResultNotFound e) {
+            System.out.println("Результат не найден");
+        }
+          }
 }

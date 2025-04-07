@@ -10,7 +10,7 @@ public class SearchEngine {
         array = new Searchable[size];
     }
 
-    public Searchable[] search(String input) {
+    public Searchable[] search(String input) throws BestResultNotFound{
         Searchable[] outputArray = new Searchable[5];
         int i = 0;
         for (Searchable item: array) {
@@ -18,6 +18,9 @@ public class SearchEngine {
                 outputArray[i] = item;
                 i++;
             }
+        }
+        if (outputArray[0] == null) {
+            throw new BestResultNotFound("Ничего не найдено");
         }
         return outputArray;
     }
@@ -29,14 +32,5 @@ public class SearchEngine {
                 break;
             }
         }
-    }
-
-    public Searchable bestResultSearch(String search) {
-        for (Searchable item: array) {
-            if (item.getSearchTerm().contains(search)) {
-                return item;
-            }
-        }
-        throw new BestResultNotFound("Такого предмета нет");
     }
 }
