@@ -21,14 +21,14 @@ public class App {
         basket.addProduct(toiletPaper);
         basket.addProduct(toiletPaper);
         basket.addProduct(toiletPaper);
-
+        System.out.println(basket.deleteProduct("toilet paper"));
 
 
         System.out.println(basket.getSum());
         System.out.println(basket.isInBasket("toilet paper"));
         System.out.println(basket.isInBasket("game boy"));
         basket.printBasket();
-        basket.emptyBasket();
+
         basket.printBasket();
         System.out.println(basket.isInBasket("game boy"));
 
@@ -63,11 +63,11 @@ public class App {
         engine.add(towel);
 
         try {
-            System.out.println(Arrays.toString(engine.search("article A")));
-            System.out.println(Arrays.toString(engine.search("game boy")));
-            System.out.println(Arrays.toString(engine.search("lap")));
+            System.out.println((engine.search("article A")));
+            System.out.println((engine.search("game boy")));
+            System.out.println(engine.search("lap"));
         } catch (BestResultNotFound e) {
             System.out.println("Результат не найден");
         }
-          }
+    }
 }
