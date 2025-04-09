@@ -17,9 +17,10 @@ public class SearchEngine {
             if (item != null && item.getSearchTerm().contains(input)) {
                 outputArray[i] = item;
                 i++;
-            } else {
-                throw new BestResultNotFound("Ничего не найдено");
             }
+        }
+        if (outputArray[0] == null) {
+            throw new BestResultNotFound("Ничего не найдено");
         }
         return outputArray;
     }

@@ -63,9 +63,9 @@ public class App {
         engine.add(towel);
 
         try {
-            System.out.println((engine.search("article A")));
-            System.out.println((engine.search("game boy")));
-            System.out.println(engine.search("lap"));
+            System.out.println((Arrays.toString(engine.search("article A"))));
+            System.out.println((Arrays.toString(engine.search("game boy"))));
+            System.out.println(Arrays.toString(engine.search("lap")));
         } catch (BestResultNotFound e) {
             System.out.println("Результат не найден");
         }
