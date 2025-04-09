@@ -46,13 +46,14 @@ public class App {
         System.out.println(nintendo.isSpecial());
 
         Article articleA = new Article("article A", "Hello, my name is Vasily");
-        Article articleB = new Article("Article B", "Hi, Vasily!");
-        SearchEngine engine = new SearchEngine(10);
+        Article articleB = new Article("article B", "Hi, Vasily!");
+        SearchEngine engine = new SearchEngine();
+        /*
         engine.add(articleA);
         engine.add(articleB);
         engine.add(nintendo);
         engine.add(gameBoy);
-
+        */
 
         System.out.println();
         System.out.println();
@@ -60,8 +61,17 @@ public class App {
         SimpleProduct towel = new SimpleProduct("Towel", 100);
         DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
 
+        engine.add(articleA);
+        engine.add(articleA);
         engine.add(towel);
-
+        engine.add(nintendo);
+        try {
+            System.out.println(engine.search("Towel"));
+            System.out.println(engine.search("nintendo"));
+        } catch (BestResultNotFound e) {
+            System.out.println("Nothing found");
+        }
+        /*
         try {
             System.out.println((Arrays.toString(engine.search("article A"))));
             System.out.println((Arrays.toString(engine.search("game boy"))));
@@ -69,5 +79,6 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println("Результат не найден");
         }
+         */
     }
 }
