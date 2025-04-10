@@ -2,20 +2,16 @@ package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.Product.Product;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
+
 public class ProductBasket {
-    private Product[] list = new Product[5];
+    //private Product[] list = new Product[5];
+    private ArrayList<Product> list = new ArrayList<>();
 
     public void addProduct(Product a) {
-        if (isFull()) {
-            System.out.println("Невозможно добавить товар");
-            return;
-        }
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] == null) {
-                list[i] = a;
-                break;
-            }
-        }
+        list.add(a);
     }
 
     public int getSum() {
@@ -29,10 +25,10 @@ public class ProductBasket {
     }
 
     public void printBasket() {
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) != null) {
 
-                System.out.println(list[i]);
+                System.out.println(list.get(i));
             }
         }
         System.out.println("Итого: " + getSum());
@@ -50,17 +46,26 @@ public class ProductBasket {
     }
 
     public void emptyBasket() {
-        for (int i = 0; i < list.length; i++) {
-            list[i] = null;
-        }
+        list.clear();
     }
 
-    private boolean isFull() {
-        if (list[list.length-1] != null) {
-            return true;
+    public ArrayList<Product> deleteProduct(String name) {
+        ArrayList<Product> deleted = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getName().equals(name)) {
+                deleted.add(list.get(i));
+            }
         }
-        else {
-            return false;
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+            if (list.get(i).getName().equals(name)) {
+                list.remove(i);
+            }
         }
+        if (deleted.isEmpty()) {
+            System.out.println("Список пуст");
+        }
+        return deleted;
     }
 }
