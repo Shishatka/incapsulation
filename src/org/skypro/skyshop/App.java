@@ -16,22 +16,6 @@ public class App {
     public static void main(String[] args) {
         Product toiletPaper = new SimpleProduct("toilet paper", 100);
         Product gameBoy = new SimpleProduct("game boy", 500);
-/*
-
-        basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
-        System.out.println(basket.deleteProduct("toilet paper"));
-
-
-        System.out.println(basket.getSum());
-        System.out.println(basket.isInBasket("toilet paper"));
-        System.out.println(basket.isInBasket("game boy"));
-        basket.printBasket();
-
-        basket.printBasket();
-        System.out.println(basket.isInBasket("game boy"));
-        */
         ProductBasket basket = new ProductBasket();
 
         FixPriceProduct nintendoSwitch = new FixPriceProduct("nintendo switch");
@@ -74,14 +58,5 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println("Nothing found");
         }
-        /*
-        try {
-            System.out.println((Arrays.toString(engine.search("article A"))));
-            System.out.println((Arrays.toString(engine.search("game boy"))));
-            System.out.println(Arrays.toString(engine.search("lap")));
-        } catch (BestResultNotFound e) {
-            System.out.println("Результат не найден");
-        }
-         */
     }
 }
