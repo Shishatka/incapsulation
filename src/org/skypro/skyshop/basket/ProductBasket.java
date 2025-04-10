@@ -57,10 +57,14 @@ public class ProductBasket {
                 deleted.add(list.get(i));
             }
         }
-        for (int i = 0; i <= list.size(); i++) {
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
             if (list.get(i).getName().equals(name)) {
                 list.remove(i);
             }
+        }
+        if (deleted.isEmpty()) {
+            System.out.println("Список пуст");
         }
         return deleted;
     }

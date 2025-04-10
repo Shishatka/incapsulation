@@ -16,8 +16,8 @@ public class App {
     public static void main(String[] args) {
         Product toiletPaper = new SimpleProduct("toilet paper", 100);
         Product gameBoy = new SimpleProduct("game boy", 500);
+/*
 
-        ProductBasket basket = new ProductBasket();
         basket.addProduct(toiletPaper);
         basket.addProduct(toiletPaper);
         basket.addProduct(toiletPaper);
@@ -31,29 +31,27 @@ public class App {
 
         basket.printBasket();
         System.out.println(basket.isInBasket("game boy"));
+        */
+        ProductBasket basket = new ProductBasket();
 
         FixPriceProduct nintendoSwitch = new FixPriceProduct("nintendo switch");
         DiscountedProduct nintendo = new DiscountedProduct("nintendo 3ds", 600, 50);
-        System.out.println(nintendo);
-        System.out.println(toiletPaper);
-        System.out.println(nintendoSwitch);
+        Article articleA = new Article("article A", "Hello, my name is Vasily");
+        Article articleB = new Article("article B", "Hi, Vasily!");
+        SearchEngine engine = new SearchEngine();
+
         basket.addProduct(nintendo);
         basket.addProduct(nintendoSwitch);
         basket.addProduct(gameBoy);
         basket.addProduct(toiletPaper);
-        System.out.println();
-        basket.printBasket();
-        System.out.println(nintendo.isSpecial());
+        System.out.println(basket.deleteProduct("toilet paper"));
 
-        Article articleA = new Article("article A", "Hello, my name is Vasily");
-        Article articleB = new Article("article B", "Hi, Vasily!");
-        SearchEngine engine = new SearchEngine();
-        /*
-        engine.add(articleA);
-        engine.add(articleB);
-        engine.add(nintendo);
-        engine.add(gameBoy);
-        */
+
+        basket.printBasket();
+        System.out.println(basket.deleteProduct("towel"));
+
+
+
 
         System.out.println();
         System.out.println();
@@ -62,9 +60,14 @@ public class App {
         DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
 
         engine.add(articleA);
+        engine.add(articleB);
+        engine.add(nintendo);
+        engine.add(gameBoy);
+        engine.add(articleA);
         engine.add(articleA);
         engine.add(towel);
         engine.add(nintendo);
+
         try {
             System.out.println(engine.search("Towel"));
             System.out.println(engine.search("nintendo"));
