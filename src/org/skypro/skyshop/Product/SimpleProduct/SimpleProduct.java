@@ -7,10 +7,17 @@ public class SimpleProduct extends Product {
 
     public SimpleProduct(String name, int price) {
         super(name);
+        if (price <= 0) {
+            throw new IllegalArgumentException("Цена должна быть строго больше нуля");
+        }
         this.price = price;
+
     }
 
     public void setPrice(int price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("Цена должна быть строго больше нуля");
+        }
         this.price = price;
     }
 

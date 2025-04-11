@@ -13,6 +13,9 @@ public abstract class Product implements Searchable {
     }
 
     public Product(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new RuntimeException("Название продукта не может быть пустой строкой или null");
+        }
         this.name = name;
     }
 

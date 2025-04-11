@@ -1,32 +1,49 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Exceptions.BestResultNotFound;
 import org.skypro.skyshop.interfaces.Searchable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SearchEngine {
-    Searchable[] array;
+    private ArrayList<Searchable> arrayList = new ArrayList<>();
+    private Map<String, Searchable> map = new HashMap<>();
 
-    public SearchEngine(int size) {
-        array = new Searchable[size];
-    }
+    public ArrayList<Searchable> search(String input) throws BestResultNotFound {
+        ArrayList<Searchable> output = new ArrayList<>();
 
-    public Searchable[] search(String input) {
-        Searchable[] outputArray = new Searchable[5];
-        int i = 0;
-        for (Searchable item: array) {
+        for (Searchable item : arrayList) {
             if (item != null && item.getSearchTerm().contains(input)) {
-                outputArray[i] = item;
-                i++;
+                output.add(item);
             }
         }
-        return outputArray;
+        if (output.isEmpty()) {
+            throw new BestResultNotFound("Ничего не найдено");
+        }
+        return output;
     }
 
-    public void add(Searchable item) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                array[i] = item;
-                break;
+    public Map<String, Searchable> searchMap(String input) throws BestResultNotFound {
+        Map<String, Searchable> output = new HashMap<>();
+        for (String i: map.keySet()) {
+            System.out.println("key: " + i + " value: " + map.get(i));
+            if (map.get(i) != null & map.get(i).getSearchTerm().contains(input)) {
+                output.put(i, map.get(i));
             }
         }
+        if (output.isEmpty()) {
+            throw new BestResultNotFound("Ничего не найдено");
+        }
+        return output;
+    }
+
+    public void addMap(Searchable searchable) {
+        map.put(searchable.getSearchTerm(), searchable);
+    }
+
+    public void add(Searchable searchable) {
+        arrayList.add(searchable);
     }
 }
