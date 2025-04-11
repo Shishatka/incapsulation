@@ -1,39 +1,41 @@
 package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.Product.Product;
+import org.skypro.skyshop.interfaces.Searchable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ListIterator;
 
 public class ProductBasket {
-    //private Product[] list = new Product[5];
-    private ArrayList<Product> list = new ArrayList<>();
+    //private ArrayList<Product> list = new ArrayList<>();
+    private HashMap<String, Product>  map = new HashMap<>();
+
 
     public void addProduct(Product a) {
-        list.add(a);
+        map.put(a.getSearchTerm(), a);
     }
 
     public int getSum() {
         int sum = 0;
-        for (Product pro: list) {
-            if (pro != null) {
-                sum = sum + pro.getPrice();
+        for (String i : map.keySet()) {
+            if (i != null) {
+                sum = sum + map.get(i).getPrice();
             }
         }
         return sum;
     }
 
     public void printBasket() {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) != null) {
-
-                System.out.println(list.get(i));
+        for (String i : map.keySet()) {
+            if (i != null) {
+                System.out.println(map.get(i));
             }
         }
         System.out.println("Итого: " + getSum());
     }
-
+    /*
     public boolean isInBasket(String name) {
         for (Product pro: list) {
             if (pro != null) {
@@ -44,27 +46,24 @@ public class ProductBasket {
         }
         return false;
     }
-
+    */
     public void emptyBasket() {
-        list.clear();
+        map.clear();
     }
 
     public ArrayList<Product> deleteProduct(String name) {
         ArrayList<Product> deleted = new ArrayList<>();
 
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getName().equals(name)) {
-                deleted.add(list.get(i));
+        for (String i: map.keySet()) {
+            if (map.get(i).getName().equals(name)) {
+                deleted.add(map.get(i));
             }
         }
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            if (list.get(i).getName().equals(name)) {
-                list.remove(i);
+        for (String j: map.keySet()) {
+            if (map.get(j).getName().equals(name)) {
+                map.remove(j);
+                break;
             }
-        }
-        if (deleted.isEmpty()) {
-            System.out.println("Список пуст");
         }
         return deleted;
     }

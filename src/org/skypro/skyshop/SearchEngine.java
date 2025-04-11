@@ -4,15 +4,13 @@ import org.skypro.skyshop.Exceptions.BestResultNotFound;
 import org.skypro.skyshop.interfaces.Searchable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SearchEngine {
-    ArrayList<Searchable> arrayList = new ArrayList<>();
-   // Searchable[] array;
-    /*
-    public SearchEngine(int size) {
-        array = new Searchable[size];
-    }
-    */
+    private ArrayList<Searchable> arrayList = new ArrayList<>();
+    private Map<String, Searchable> map = new HashMap<>();
+
     public ArrayList<Searchable> search(String input) throws BestResultNotFound {
         ArrayList<Searchable> output = new ArrayList<>();
 
@@ -27,34 +25,25 @@ public class SearchEngine {
         return output;
     }
 
+    public Map<String, Searchable> searchMap(String input) throws BestResultNotFound {
+        Map<String, Searchable> output = new HashMap<>();
+        for (String i: map.keySet()) {
+            System.out.println("key: " + i + " value: " + map.get(i));
+            if (map.get(i) != null & map.get(i).getSearchTerm().contains(input)) {
+                output.put(i, map.get(i));
+            }
+        }
+        if (output.isEmpty()) {
+            throw new BestResultNotFound("Ничего не найдено");
+        }
+        return output;
+    }
+
+    public void addMap(Searchable searchable) {
+        map.put(searchable.getSearchTerm(), searchable);
+    }
+
     public void add(Searchable searchable) {
         arrayList.add(searchable);
     }
-    /*
-    public Searchable[] search(String input) throws BestResultNotFound {
-        Searchable[] outputArray = new Searchable[5];
-        int i = 0;
-        for (Searchable item : array) {
-            if (item != null && item.getSearchTerm().contains(input)) {
-                outputArray[i] = item;
-                i++;
-            }
-        }
-        if (outputArray[0] == null) {
-            throw new BestResultNotFound("Ничего не найдено");
-        }
-        return outputArray;
-    }
-
-
-        public void add (Searchable item) {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] == null) {
-                    array[i] = item;
-                    break;
-                }
-            }
-        }
-
-     */
-    }
+}

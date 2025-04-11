@@ -28,12 +28,10 @@ public class App {
         basket.addProduct(nintendoSwitch);
         basket.addProduct(gameBoy);
         basket.addProduct(toiletPaper);
-        System.out.println(basket.deleteProduct("toilet paper"));
 
-
+        basket.deleteProduct("game boy");
         basket.printBasket();
         System.out.println(basket.deleteProduct("towel"));
-
 
 
 
@@ -51,12 +49,24 @@ public class App {
         engine.add(articleA);
         engine.add(towel);
         engine.add(nintendo);
+        engine.addMap(toiletPaper);
 
+        try {
+            engine.searchMap("toilet paper");
+        }
+        catch (BestResultNotFound bestResultNotFound) {
+            System.out.println("Nothing found");
+        }
+
+        /*
         try {
             System.out.println(engine.search("Towel"));
             System.out.println(engine.search("nintendo"));
         } catch (BestResultNotFound e) {
             System.out.println("Nothing found");
         }
+
+         */
     }
+
 }
