@@ -23,11 +23,15 @@ public class App {
         Article articleA = new Article("article A", "Hello, my name is Vasily");
         Article articleB = new Article("article B", "Hi, Vasily!");
         SearchEngine engine = new SearchEngine();
+        Product towel = new SimpleProduct("towel", 100);
+        Product towel2 = new FixPriceProduct("towel");
 
         basket.addProduct(nintendo);
         basket.addProduct(nintendoSwitch);
         basket.addProduct(gameBoy);
         basket.addProduct(toiletPaper);
+        basket.addProduct(towel);
+        basket.addProduct(towel2);
 
         basket.deleteProduct("game boy");
         basket.printBasket();
@@ -38,18 +42,19 @@ public class App {
         System.out.println();
         System.out.println();
 
-        SimpleProduct towel = new SimpleProduct("Towel", 100);
+
         DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
 
-        engine.add(articleA);
-        engine.add(articleB);
-        engine.add(nintendo);
-        engine.add(gameBoy);
-        engine.add(articleA);
-        engine.add(articleA);
-        engine.add(towel);
-        engine.add(nintendo);
+        engine.addMap(articleA);
+        engine.addMap(articleB);
+        engine.addMap(nintendo);
+        engine.addMap(gameBoy);
+        engine.addMap(articleA);
+        engine.addMap(articleA);
+        engine.addMap(towel);
+        engine.addMap(nintendo);
         engine.addMap(toiletPaper);
+
 
         try {
             engine.searchMap("toilet paper");
