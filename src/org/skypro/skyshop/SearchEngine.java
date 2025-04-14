@@ -1,32 +1,29 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Exceptions.BestResultNotFound;
+import org.skypro.skyshop.Product.Product;
 import org.skypro.skyshop.interfaces.Searchable;
 
+import java.util.*;
+
 public class SearchEngine {
-    Searchable[] array;
+    private Map<String, Searchable> map = new HashMap<>();
 
-    public SearchEngine(int size) {
-        array = new Searchable[size];
-    }
+    public Map<String, Searchable> searchMap(String input) throws BestResultNotFound {
+        Map<String, Searchable> output = new TreeMap<>();
 
-    public Searchable[] search(String input) {
-        Searchable[] outputArray = new Searchable[5];
-        int i = 0;
-        for (Searchable item: array) {
-            if (item != null && item.getSearchTerm().contains(input)) {
-                outputArray[i] = item;
-                i++;
+        for (Searchable i: map.values()) {
+            if (i != null && i.getSearchTerm().contains(input)) {
+                output.put(i.getSearchTerm(), i);
             }
         }
-        return outputArray;
+        if (output.isEmpty()) {
+            throw new BestResultNotFound("Ничего не найдено");
+        }
+        return output;
     }
 
-    public void add(Searchable item) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                array[i] = item;
-                break;
-            }
-        }
+    public void addMap(Searchable searchable) {
+        map.put(searchable.getSearchTerm(), searchable);
     }
 }

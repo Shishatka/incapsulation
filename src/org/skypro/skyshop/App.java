@@ -1,5 +1,6 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Exceptions.BestResultNotFound;
 import org.skypro.skyshop.Product.DiscountedProduct.DiscountedProduct;
 import org.skypro.skyshop.Product.FixPriceProduct.FixPriceProduct;
 import org.skypro.skyshop.Product.Product;
@@ -15,44 +16,62 @@ public class App {
     public static void main(String[] args) {
         Product toiletPaper = new SimpleProduct("toilet paper", 100);
         Product gameBoy = new SimpleProduct("game boy", 500);
-
         ProductBasket basket = new ProductBasket();
-        basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
-        basket.addProduct(toiletPaper);
-
-
-
-        System.out.println(basket.getSum());
-        System.out.println(basket.isInBasket("toilet paper"));
-        System.out.println(basket.isInBasket("game boy"));
-        basket.printBasket();
-        basket.emptyBasket();
-        basket.printBasket();
-        System.out.println(basket.isInBasket("game boy"));
 
         FixPriceProduct nintendoSwitch = new FixPriceProduct("nintendo switch");
         DiscountedProduct nintendo = new DiscountedProduct("nintendo 3ds", 600, 50);
-        System.out.println(nintendo);
-        System.out.println(toiletPaper);
-        System.out.println(nintendoSwitch);
+        Article articleA = new Article("article A", "Hello, my name is Vasily");
+        Article articleB = new Article("article B", "Hi, Vasily!");
+        SearchEngine engine = new SearchEngine();
+        Product towel = new SimpleProduct("towel", 100);
+        Product towel2 = new FixPriceProduct("towel");
+
         basket.addProduct(nintendo);
         basket.addProduct(nintendoSwitch);
         basket.addProduct(gameBoy);
         basket.addProduct(toiletPaper);
-        System.out.println();
+        basket.addProduct(towel);
+        basket.addProduct(towel2);
+
+        basket.deleteProduct("game boy");
         basket.printBasket();
-        System.out.println(nintendo.isSpecial());
+        System.out.println(basket.deleteProduct("towel"));
 
-        Article articleA = new Article("article A", "Hello, my name is Vasily");
-        Article articleB = new Article("Article B", "Hi, Vasily!");
-        SearchEngine engine = new SearchEngine(10);
-        engine.add(articleA);
-        engine.add(articleB);
-        engine.add(nintendo);
-        engine.add(gameBoy);
 
-        System.out.println(Arrays.toString(engine.search("article A")));
-        System.out.println(Arrays.toString(engine.search("game boy")));
+
+        System.out.println();
+        System.out.println();
+
+
+        DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
+
+        engine.addMap(articleA);
+        engine.addMap(articleB);
+        engine.addMap(nintendo);
+        engine.addMap(gameBoy);
+        engine.addMap(articleA);
+        engine.addMap(articleA);
+        engine.addMap(towel);
+        engine.addMap(nintendo);
+        engine.addMap(toiletPaper);
+
+
+        try {
+            engine.searchMap("toilet paper");
+        }
+        catch (BestResultNotFound bestResultNotFound) {
+            System.out.println("Nothing found");
+        }
+
+        /*
+        try {
+            System.out.println(engine.search("Towel"));
+            System.out.println(engine.search("nintendo"));
+        } catch (BestResultNotFound e) {
+            System.out.println("Nothing found");
+        }
+
+         */
     }
+
 }
