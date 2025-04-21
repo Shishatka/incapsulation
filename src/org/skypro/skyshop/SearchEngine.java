@@ -2,19 +2,20 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.Exceptions.BestResultNotFound;
 import org.skypro.skyshop.Product.Product;
+import org.skypro.skyshop.comparator.SearchableComparator;
 import org.skypro.skyshop.interfaces.Searchable;
 
 import java.util.*;
 
 public class SearchEngine {
-    private Map<String, Searchable> map = new HashMap<>();
+    private Set<Searchable> set = new HashSet<>();
 
-    public Map<String, Searchable> searchMap(String input) throws BestResultNotFound {
-        Map<String, Searchable> output = new TreeMap<>();
+    public Set<Searchable> searchSet(String input) throws BestResultNotFound {
+        Set<Searchable> output = new TreeSet<>(new SearchableComparator());
 
-        for (Searchable i: map.values()) {
+        for (Searchable i: set) {
             if (i != null && i.getSearchTerm().contains(input)) {
-                output.put(i.getSearchTerm(), i);
+                output.add(i);
             }
         }
         if (output.isEmpty()) {
@@ -23,7 +24,7 @@ public class SearchEngine {
         return output;
     }
 
-    public void addMap(Searchable searchable) {
-        map.put(searchable.getSearchTerm(), searchable);
+    public void addSet(Searchable searchable) {
+        set.add(searchable);
     }
 }

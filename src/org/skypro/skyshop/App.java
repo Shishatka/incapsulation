@@ -45,33 +45,22 @@ public class App {
 
         DiscountedProduct discountedProduct = new DiscountedProduct("laptop", 1000, 50);
 
-        engine.addMap(articleA);
-        engine.addMap(articleB);
-        engine.addMap(nintendo);
-        engine.addMap(gameBoy);
-        engine.addMap(articleA);
-        engine.addMap(articleA);
-        engine.addMap(towel);
-        engine.addMap(nintendo);
-        engine.addMap(toiletPaper);
-
+        engine.addSet(articleA);
+        engine.addSet(articleB);
+        engine.addSet(nintendo);
+        engine.addSet(gameBoy);
+        engine.addSet(articleA);
+        engine.addSet(articleA);
+        engine.addSet(towel);
+        engine.addSet(nintendo);
+        engine.addSet(toiletPaper);
 
         try {
-            engine.searchMap("toilet paper");
+            System.out.println(engine.searchSet("toilet paper"));
         }
         catch (BestResultNotFound bestResultNotFound) {
             System.out.println("Nothing found");
         }
-
-        /*
-        try {
-            System.out.println(engine.search("Towel"));
-            System.out.println(engine.search("nintendo"));
-        } catch (BestResultNotFound e) {
-            System.out.println("Nothing found");
-        }
-
-         */
     }
 
 }
