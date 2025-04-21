@@ -1,66 +1,39 @@
 package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.Product.Product;
+import org.skypro.skyshop.interfaces.Searchable;
+
+import java.util.*;
 
 public class ProductBasket {
-    private Product[] list = new Product[5];
+    private Map<String, List<Product>>  map = new HashMap<>();
 
     public void addProduct(Product a) {
-        if (isFull()) {
-            System.out.println("Невозможно добавить товар");
-            return;
+        if (!map.containsKey(a.getName())) {
+            map.put(a.getName(), new ArrayList<>());
         }
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] == null) {
-                list[i] = a;
-                break;
-            }
-        }
-    }
-
-    public int getSum() {
-        int sum = 0;
-        for (Product pro: list) {
-            if (pro != null) {
-                sum = sum + pro.getPrice();
-            }
-        }
-        return sum;
+            map.get(a.getName()).add(a);
     }
 
     public void printBasket() {
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-
-                System.out.println(list[i]);
-            }
-        }
-        System.out.println("Итого: " + getSum());
-    }
-
-    public boolean isInBasket(String name) {
-        for (Product pro: list) {
-            if (pro != null) {
-                if (pro.getName().equals(name)) {
-                    return true;
+        int sum = 0;
+        for (List<Product> products : map.values()) {
+            for (Product product : products) {
+                if (product != null) {
+                    System.out.println(product);
+                    sum += product.getPrice();
                 }
             }
+
         }
-        return false;
+        System.out.println("Итого: " + sum);
     }
 
     public void emptyBasket() {
-        for (int i = 0; i < list.length; i++) {
-            list[i] = null;
-        }
+        map.clear();
     }
 
-    private boolean isFull() {
-        if (list[list.length-1] != null) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public List<Product> deleteProduct(String name) {
+        return map.remove(name);
     }
 }
