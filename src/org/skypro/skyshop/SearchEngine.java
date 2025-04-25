@@ -13,6 +13,7 @@ public class SearchEngine {
 
     public Set<Searchable> searchSet(String input) throws BestResultNotFound {
         Set<Searchable> output = new TreeSet<>(new SearchableComparator());
+
         output = set.stream().filter(i -> i.getSearchTerm().contains(input)).collect(Collectors.toSet());
         return output;
     }

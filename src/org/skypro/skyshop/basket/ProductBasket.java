@@ -17,6 +17,7 @@ public class ProductBasket {
 
     public void printBasket() {
         int sum = 0;
+
         map.values().stream().flatMap(Collection::stream).forEach(System.out::println);
     }
 
