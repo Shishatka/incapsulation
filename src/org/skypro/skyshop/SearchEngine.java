@@ -6,21 +6,14 @@ import org.skypro.skyshop.comparator.SearchableComparator;
 import org.skypro.skyshop.interfaces.Searchable;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SearchEngine {
-    private Set<Searchable> set = new HashSet<>();
+    private final Set<Searchable> set = new HashSet<>();
 
     public Set<Searchable> searchSet(String input) throws BestResultNotFound {
         Set<Searchable> output = new TreeSet<>(new SearchableComparator());
-
-        for (Searchable i: set) {
-            if (i != null && i.getSearchTerm().contains(input)) {
-                output.add(i);
-            }
-        }
-        if (output.isEmpty()) {
-            throw new BestResultNotFound("Ничего не найдено");
-        }
+        output = set.stream().filter(i -> i.getSearchTerm().contains(input)).collect(Collectors.toSet());
         return output;
     }
 

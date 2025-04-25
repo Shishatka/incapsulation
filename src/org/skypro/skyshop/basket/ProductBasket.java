@@ -17,16 +17,7 @@ public class ProductBasket {
 
     public void printBasket() {
         int sum = 0;
-        for (List<Product> products : map.values()) {
-            for (Product product : products) {
-                if (product != null) {
-                    System.out.println(product);
-                    sum += product.getPrice();
-                }
-            }
-
-        }
-        System.out.println("Итого: " + sum);
+        map.values().stream().flatMap(Collection::stream).forEach(System.out::println);
     }
 
     public void emptyBasket() {
