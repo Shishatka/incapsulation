@@ -1,32 +1,24 @@
 package org.skypro.skyshop;
 
+import org.skypro.skyshop.Exceptions.BestResultNotFound;
+import org.skypro.skyshop.Product.Product;
+import org.skypro.skyshop.comparator.SearchableComparator;
 import org.skypro.skyshop.interfaces.Searchable;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class SearchEngine {
-    Searchable[] array;
+    private final Set<Searchable> set = new HashSet<>();
 
-    public SearchEngine(int size) {
-        array = new Searchable[size];
+    public Set<Searchable> searchSet(String input) throws BestResultNotFound {
+        Set<Searchable> output = new TreeSet<>(new SearchableComparator());
+
+        output = set.stream().filter(i -> i.getSearchTerm().contains(input)).collect(Collectors.toSet());
+        return output;
     }
 
-    public Searchable[] search(String input) {
-        Searchable[] outputArray = new Searchable[5];
-        int i = 0;
-        for (Searchable item: array) {
-            if (item != null && item.getSearchTerm().contains(input)) {
-                outputArray[i] = item;
-                i++;
-            }
-        }
-        return outputArray;
-    }
-
-    public void add(Searchable item) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                array[i] = item;
-                break;
-            }
-        }
+    public void addSet(Searchable searchable) {
+        set.add(searchable);
     }
 }
